@@ -6,7 +6,7 @@ int main()
 FILE *fint,*ftab,*flen,*fsym;
 int op1[10],txtlen,txtlen1,i,j=0,len;
 char add[5],symadd[5],op[5],start[10],temp[30],line[20],label[20],mne[10],operand[10],symtab[10],opmne[10];
-//clrscr();
+
 fint=fopen("input.txt","r");
 flen=fopen("length.txt","r");
 ftab=fopen("optab.txt","r");
@@ -19,10 +19,10 @@ fscanf(flen,"%d",&len);
 }
 printf("H^%s^%s^%d\nT^00%s^",label,start,len,start);
 fscanf(fint,"%s%s%s%s",add,label,mne,operand);
-while(strcmp(mne,"END")!=0)
+for(int i=0;i<8;i++)
 {
 fscanf(ftab,"%s%s",opmne,op);
-while(!feof(ftab))
+while(!feof(ftab))         
 {
 if(strcmp(mne,opmne)==0)
 {
@@ -66,6 +66,6 @@ fclose(fint);
 fclose(ftab);
 fclose(fsym);
 fclose(flen);
-//fclose(fout);
-// getch();
+// fclose(fout);
+return 0;
 }

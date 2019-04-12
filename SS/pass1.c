@@ -2,13 +2,13 @@
 #include<string.h>
 void main()
 {
-FILE *f1,*f2,*f3,*f4;
+FILE *file1,*file2,*file3,*file4;
 int lc,sa,l,op1,o,len;
 char m1[20],la[20],op[20],otp[20];
 //clrscr();
-f1=fopen("input.txt","r");
-f3=fopen("symtab.txt","w");
-fscanf(f1,"%s %s %d",la,m1,&op1);
+file1=fopen("input.txt","r");
+file3=fopen("symtab.txt","w");
+fscanf(file1,"%s %s %d",la,m1,&op1);
 if(strcmp(m1,"START")==0)
 {
  sa=op1;
@@ -17,27 +17,27 @@ if(strcmp(m1,"START")==0)
  }
  else
  lc=0;
-fscanf(f1,"%s %s",la,m1);
-while(!feof(f1))
+fscanf(file1,"%s %s",la,m1);
+while(!feof(file1))
 {
- fscanf(f1,"%s",op);
+ fscanf(file1,"%s",op);
  printf("\n%d\t%s\t%s\t%s\n",lc,la,m1,op);
  if(strcmp(la,"-")!=0)
  {
- fprintf(f3,"\n%d\t%s\n",lc,la);
+ fprintf(file3,"\n%d\t%s\n",lc,la);
  }
- f2=fopen("optab.txt","r");
- fscanf(f2,"%s %d",otp,&o);
- while(!feof(f2))
+ file2=fopen("optab.txt","r");
+ fscanf(file2,"%s %d",otp,&o);
+ while(!feof(file2))
  {
   if(strcmp(m1,otp)==0)
   {
     lc=lc+3;
     break;
   }
-  fscanf(f2,"%s %d",otp,&o);
+  fscanf(file2,"%s %d",otp,&o);
   }
-  fclose(f2);
+  fclose(file2);
   if(strcmp(m1,"WORD")==0)
  
     {
@@ -62,12 +62,12 @@ while(!feof(f1))
      op1=atoi(op);
      lc=lc+op1;
      }
-    fscanf(f1,"%s%s",la,m1);
+    fscanf(file1,"%s%s",la,m1);
     }
     if(strcmp(m1,"END")==0)
     {
     printf("Program length =\n%d",lc-sa);
     }
-    fclose(f1);
-    fclose(f3);
+    fclose(file1);
+    fclose(file3);
     }
